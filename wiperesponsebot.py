@@ -9,6 +9,7 @@ intents = discord.Intents.default()
 intents.message_content = True  # make sure it can read chat in channels (this will have to get changed since it will read any channel it can see currently so it will probably read #announcments and reply there to lmao
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+# will be the first part of the reply the bot makes, the date is from the second part
 keyword_responses = {
     "wipe": "No. The wipe has now been pushed back. ",
         # other words can be added here if we want it to trigger on anything else
@@ -32,10 +33,10 @@ async def on_message(message):
         if keyword in message.content.lower():
             # increment the date by one day
             date_counters[keyword] += timedelta(days=1)
-            # replies to the message
+            # part two of the reply that includes the date
             response = f"{keyword_responses[keyword]} The new date for wipe is {date_counters[keyword].strftime('%Y-%m-%d')}."
             await message.reply(response)
-            break  # Stop checking if it finds wipe in a message and post a response
+            break  # Stop checking if it finds wipe in a message and post a reply
 
     await bot.process_commands(message)
 # bot token
