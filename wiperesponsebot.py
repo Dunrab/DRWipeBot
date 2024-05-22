@@ -1,5 +1,5 @@
 '''
-depending on how python 3.10 installed pip either pip install discord.py or apt-get install python3-discord
+depending on how python 3.10 installed pip either pip3 install discord.py or apt-get install python3-discord
 '''
 import discord
 from discord.ext import commands
